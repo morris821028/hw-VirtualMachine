@@ -11,6 +11,9 @@ rebuild:
 	make -C build.qemu
 buildtest:
 	make -C test all
+extract-benchmark:
+	tar -xf  material/automotive.tar.gz
+	tar zxvf material/coremark_v1.0.tgz
 clean:
 	rm -rf qemu-0.13.0 build.qemu
 	make -C test clean

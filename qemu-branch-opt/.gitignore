@@ -1,3 +1,9 @@
+#
 *.log
+*.gz
+
+#
 build.qemu
 qemu-0.13.0
+automotive
+coremark_v1.0
