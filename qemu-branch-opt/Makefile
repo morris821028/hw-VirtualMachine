@@ -9,5 +9,8 @@ rebuild:
 	cp source/optimization.h qemu-0.13.0/
 	cp source/cpu-defs.h qemu-0.13.0/
 	make -C build.qemu
+buildtest:
+	make -C test all
 clean:
 	rm -rf qemu-0.13.0 build.qemu
+	make -C test clean
