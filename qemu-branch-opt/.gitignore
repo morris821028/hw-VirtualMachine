@@ -1,0 +1,3 @@
+*.log
+build.qemu
+qemu-0.13.0
