@@ -20,7 +20,7 @@ typedef struct list_head list_t;
 /*
  * Shadow Stack
  */
-#define SHACK_SIZE		(16 * 1024)
+#define SHACK_SIZE		(1048576)
 #define SHACK_BUCKET	(1U << 16)
 #define SHACK_MASK		(SHACK_BUCKET - 1)
 

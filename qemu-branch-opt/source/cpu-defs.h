@@ -211,8 +211,8 @@ typedef struct CPUWatchpoint {
     struct kvm_run *kvm_run;                                            \
     int kvm_fd;                                                         \
     int kvm_vcpu_dirty;                                                 \
-    uint64_t *shack;                                                    \
-    uint64_t *shack_top;                                                \
-    uint64_t *shack_end;                                                \
+    void *shack;                                                    \
+    void *shack_top;                                                \
+    void *shack_end;                                                \
     struct shack_hash *shack_hash;                                             
 #endif
