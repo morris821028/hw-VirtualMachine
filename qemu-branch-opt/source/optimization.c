@@ -13,7 +13,7 @@
 
 extern uint8_t *optimization_ret_addr;
 
-//#define HW_OPT_IBTC
+#define HW_OPT_IBTC
 #define HW_OPT_SHACK
 //#define HW_OPT_DEBUG
 /*
@@ -75,8 +75,8 @@ void helper_shack_flush(CPUState *env)
 void push_shack(CPUState *env, TCGv_ptr cpu_env, target_ulong next_eip)
 {
 #ifdef HW_OPT_SHACK
-	/* TODO */
 		const int IF1END = gen_new_label();
+		TCGv tmp_shack_top, tmp_shack_end, tmp_shack_slot;
 	/*
 		tmp_shack_top = CPUState.shack_top
 		tmp_shack_end = CPUState.shack_end
@@ -88,25 +88,27 @@ void push_shack(CPUState *env, TCGv_ptr cpu_env, target_ulong next_eip)
 		tmp_shack_slot = shack_hash_find(cpu_env, next_eip)
 		tmp_shack_top += sizeof(void*);
 		shack[tmp_shack_top] = tmp_shack_slot
-	 */
-		TCGv tmp_shack_top = tcg_temp_new_i32();
+	*/
+		tmp_shack_top = tcg_temp_new_i32();
 	tcg_gen_ld_i32(tmp_shack_top, cpu_env, offsetof(CPUState, shack_top));
-		TCGv tmp_shack_end = tcg_temp_new_i32();
+		tmp_shack_end = tcg_temp_new_i32();
 	tcg_gen_ld_i32(tmp_shack_end, cpu_env, offsetof(CPUState, shack_end));
 	tcg_gen_brcond_i32(TCG_COND_NE, tmp_shack_top, tmp_shack_end, IF1END);
 	/* */
+		tcg_temp_free_i32(tmp_shack_top);
+		tcg_temp_free_i32(tmp_shack_end);
 		tmp_shack_top = tcg_temp_new_i32();
 	/* */
 	tcg_gen_ld_i32(tmp_shack_top, cpu_env, offsetof(CPUState, shack));
 	tcg_gen_st_i32(tmp_shack_top, cpu_env, offsetof(CPUState, shack_top));
 	gen_set_label(IF1END);
 	/* */
-		tcg_temp_free_i32(tmp_shack_end);
+		tcg_temp_free_i32(tmp_shack_top);
 		tmp_shack_top = tcg_temp_new_i32();
 	/* */
 	tcg_gen_ld_i32(tmp_shack_top, cpu_env, offsetof(CPUState, shack_top));
 	/* */
-		TCGv tmp_shack_slot = tcg_const_ptr(shack_hash_find(env, next_eip));
+		tmp_shack_slot = tcg_const_ptr(shack_hash_find(env, next_eip));
 	/* */
 	tcg_gen_st_i32(tmp_shack_slot, tmp_shack_top, 0);
 	/* */
@@ -127,8 +129,9 @@ void push_shack(CPUState *env, TCGv_ptr cpu_env, target_ulong next_eip)
 void pop_shack(TCGv_ptr cpu_env, TCGv next_eip)
 {
 #ifdef HW_OPT_SHACK
-	/* TODO */
 		const int IF1END = gen_new_label();
+		TCGv tmp_next_eip, tmp_shack_top, tmp_shack_begin;
+		TCGv tmp_shack_eip, tmp_NULL, tmp_shack_slot;
 	/*
 		tmp_shack_top = CPUState.shack_top
 		tmp_shack_begin = CPUState.shack
@@ -144,34 +147,36 @@ void pop_shack(TCGv_ptr cpu_env, TCGv next_eip)
 			IF2.END
 		IF1.END
 	*/
-		TCGv tmp_next_eip = tcg_temp_local_new_i32();
+		tmp_next_eip = tcg_temp_local_new_i32();
 	tcg_gen_mov_i32(tmp_next_eip, next_eip);
-		TCGv tmp_shack_top = tcg_temp_local_new_i32();
+		tmp_shack_top = tcg_temp_local_new_i32();
 	tcg_gen_ld_i32(tmp_shack_top, cpu_env, offsetof(CPUState, shack_top));
-		TCGv tmp_shack_begin = tcg_temp_local_new_i32();
+		tmp_shack_begin = tcg_temp_new_i32();
 	tcg_gen_ld_i32(tmp_shack_begin, cpu_env, offsetof(CPUState, shack));
 	tcg_gen_brcond_i32(TCG_COND_EQ, tmp_shack_top, tmp_shack_begin, IF1END);
 		tcg_temp_free_i32(tmp_shack_begin);
 	tcg_gen_subi_i32(tmp_shack_top, tmp_shack_top, sizeof(void*));
+		tmp_shack_slot = tcg_temp_local_new_i32();
 	tcg_gen_st_i32(tmp_shack_top, cpu_env, offsetof(CPUState, shack_top));
-	tcg_gen_ld_i32(tmp_shack_top, tmp_shack_top, 0);
+	tcg_gen_ld_i32(tmp_shack_slot, tmp_shack_top, 0);
 	/* */
-		TCGv tmp_shack_eip = tcg_temp_local_new_i32();
+		tcg_temp_free_i32(tmp_shack_top);
+		tmp_shack_eip = tcg_temp_new_i32();
 	/* */
-	tcg_gen_ld_i32(tmp_shack_eip, tmp_shack_top, offsetof(shack_slot, guest_eip));
+	tcg_gen_ld_i32(tmp_shack_eip, tmp_shack_slot, offsetof(shack_slot, guest_eip));
 	tcg_gen_brcond_i32(TCG_COND_NE, tmp_shack_eip, tmp_next_eip, IF1END);
 		tcg_temp_free_i32(tmp_next_eip);
 		tcg_temp_free_i32(tmp_shack_eip);
-	tcg_gen_ld_i32(tmp_shack_top, tmp_shack_top, offsetof(shack_slot, host_eip));
+	tcg_gen_ld_i32(tmp_shack_slot, tmp_shack_slot, offsetof(shack_slot, host_eip));
 	/* */
-		TCGv tmp_NULL = tcg_const_ptr(NULL);
+		tmp_NULL = tcg_const_ptr(NULL);
 	/* */
-	tcg_gen_brcond_i32(TCG_COND_EQ, tmp_shack_top, tmp_NULL, IF1END);
+	tcg_gen_brcond_i32(TCG_COND_EQ, tmp_shack_slot, tmp_NULL, IF1END);
 	*gen_opc_ptr++= INDEX_op_jmp;
-	*gen_opparam_ptr++= tmp_shack_top;
+	*gen_opparam_ptr++= tmp_shack_slot;
 	
 	/* */
-		tcg_temp_free_i32(tmp_shack_top);
+		tcg_temp_free_i32(tmp_shack_slot);
 	/* */
 	gen_set_label(IF1END);
 #endif
