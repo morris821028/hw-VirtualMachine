@@ -10,14 +10,6 @@
 #define ENABLE_OPTIMIZATION
 
 /*
- * Link list facilities
- */
-struct list_head {
-    struct list_head *next, *prev;
-};
-typedef struct list_head list_t;
-
-/*
  * Shadow Stack
  */
 #define SHACK_SIZE		(1048576)

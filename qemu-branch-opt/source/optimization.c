@@ -163,11 +163,13 @@ void pop_shack(TCGv_ptr cpu_env, TCGv next_eip)
 		tcg_temp_free_i32(tmp_next_eip);
 		tcg_temp_free_i32(tmp_shack_eip);
 	tcg_gen_ld_i32(tmp_shack_top, tmp_shack_top, offsetof(shack_slot, host_eip));
-	tcg_gen_brcond_i32(TCG_COND_EQ, tmp_shack_top, NULL, IF1END);
-	/*
+	/* */
+		TCGv tmp_NULL = tcg_const_ptr(NULL);
+	/* */
+	tcg_gen_brcond_i32(TCG_COND_EQ, tmp_shack_top, tmp_NULL, IF1END);
 	*gen_opc_ptr++= INDEX_op_jmp;
 	*gen_opparam_ptr++= tmp_shack_top;
-	*/
+	
 	/* */
 		tcg_temp_free_i32(tmp_shack_top);
 	/* */
