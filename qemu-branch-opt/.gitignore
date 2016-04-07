@@ -1,7 +1,7 @@
 #
 *.log
 *.gz
-*.txt
+#*.txt
 
 #
 build.qemu

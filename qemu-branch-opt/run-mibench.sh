@@ -9,5 +9,6 @@ test=("basicmath/basicmath_small" \
 for i in "${test[@]}";
 do
 	echo -e "\033[35m Test ${i} Qemu \033[0m";
-	time build.qemu/i386-linux-user/qemu-i386 automotive/${i} >/dev/null;
+	(time build.qemu/i386-linux-user/qemu-i386 automotive/${i} >/dev/null) 2>&1;
+	(perf stat build.qemu/i386-linux-user/qemu-i386 automotive/${i} >/dev/null) 2>&1;
 done

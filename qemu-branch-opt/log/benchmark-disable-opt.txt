@@ -1,0 +1,93 @@
+[35m Test indirect-branch/func_ptr.out 10000000 Origin[0m
+#Route = 2, run 10000000
+Checksum BEB2EA8
+
+real	0m0.316s
+user	0m0.280s
+sys	0m0.000s
+[35m Test indirect-branch/func_ptr.out 10000000 Qemu[0m
+#Route = 2, run 10000000
+Checksum BEB2EA8
+
+real	0m4.216s
+user	0m4.156s
+sys	0m0.000s
+#Route = 2, run 10000000
+Checksum BEB2EA8
+
+ Performance counter stats for 'build.qemu/i386-linux-user/qemu-i386 test/indirect-branch/func_ptr.out 10000000':
+
+       4143.747896 task-clock (msec)         #    0.994 CPUs utilized          
+               222 context-switches          #    0.054 K/sec                  
+                 0 cpu-migrations            #    0.000 K/sec                  
+               710 page-faults               #    0.171 K/sec                  
+   <not supported> cycles                  
+   <not supported> stalled-cycles-frontend 
+   <not supported> stalled-cycles-backend  
+   <not supported> instructions            
+   <not supported> branches                
+   <not supported> branch-misses           
+
+       4.166765351 seconds time elapsed
+
+[35m Test direct-br/basic.out 10000000 Origin[0m
+#Route = 2, run 10000000
+Checksum BEB2EA8
+
+real	0m0.273s
+user	0m0.268s
+sys	0m0.000s
+[35m Test direct-br/basic.out 10000000 Qemu[0m
+#Route = 2, run 10000000
+Checksum BEB2EA8
+
+real	0m3.899s
+user	0m3.828s
+sys	0m0.000s
+#Route = 2, run 10000000
+Checksum BEB2EA8
+
+ Performance counter stats for 'build.qemu/i386-linux-user/qemu-i386 test/direct-br/basic.out 10000000':
+
+       3860.517066 task-clock (msec)         #    0.977 CPUs utilized          
+               344 context-switches          #    0.089 K/sec                  
+                 0 cpu-migrations            #    0.000 K/sec                  
+               709 page-faults               #    0.184 K/sec                  
+   <not supported> cycles                  
+   <not supported> stalled-cycles-frontend 
+   <not supported> stalled-cycles-backend  
+   <not supported> instructions            
+   <not supported> branches                
+   <not supported> branch-misses           
+
+       3.949449624 seconds time elapsed
+
+[35m Test recursion-fib/fib.out 40 Origin[0m
+Fib(40) = 165580141
+
+real	0m0.852s
+user	0m0.812s
+sys	0m0.000s
+[35m Test recursion-fib/fib.out 40 Qemu[0m
+Fib(40) = 165580141
+
+real	0m13.296s
+user	0m13.176s
+sys	0m0.000s
+Fib(40) = 165580141
+
+ Performance counter stats for 'build.qemu/i386-linux-user/qemu-i386 test/recursion-fib/fib.out 40':
+
+      13178.141003 task-clock (msec)         #    0.996 CPUs utilized          
+               656 context-switches          #    0.050 K/sec                  
+                 0 cpu-migrations            #    0.000 K/sec                  
+               710 page-faults               #    0.054 K/sec                  
+   <not supported> cycles                  
+   <not supported> stalled-cycles-frontend 
+   <not supported> stalled-cycles-backend  
+   <not supported> instructions            
+   <not supported> branches                
+   <not supported> branch-misses           
+
+      13.235069312 seconds time elapsed
+

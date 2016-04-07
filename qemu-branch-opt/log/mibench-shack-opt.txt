@@ -1,0 +1,126 @@
+[35m Test basicmath/basicmath_small Qemu [0m
+
+real	0m0.171s
+user	0m0.144s
+sys	0m0.000s
+
+ Performance counter stats for 'build.qemu/i386-linux-user/qemu-i386 automotive/basicmath/basicmath_small':
+
+        121.242319 task-clock (msec)         #    0.996 CPUs utilized          
+                11 context-switches          #    0.091 K/sec                  
+                 0 cpu-migrations            #    0.000 K/sec                  
+               726 page-faults               #    0.006 M/sec                  
+   <not supported> cycles                  
+   <not supported> stalled-cycles-frontend 
+   <not supported> stalled-cycles-backend  
+   <not supported> instructions            
+   <not supported> branches                
+   <not supported> branch-misses           
+
+       0.121688843 seconds time elapsed
+
+[35m Test basicmath/basicmath_large Qemu [0m
+
+real	0m3.376s
+user	0m3.284s
+sys	0m0.012s
+
+ Performance counter stats for 'build.qemu/i386-linux-user/qemu-i386 automotive/basicmath/basicmath_large':
+
+       3339.146993 task-clock (msec)         #    0.986 CPUs utilized          
+               219 context-switches          #    0.066 K/sec                  
+                 0 cpu-migrations            #    0.000 K/sec                  
+               728 page-faults               #    0.218 K/sec                  
+   <not supported> cycles                  
+   <not supported> stalled-cycles-frontend 
+   <not supported> stalled-cycles-backend  
+   <not supported> instructions            
+   <not supported> branches                
+   <not supported> branch-misses           
+
+       3.386551834 seconds time elapsed
+
+[35m Test bitcount/bitcnts 10000000 Qemu [0m
+
+real	0m4.572s
+user	0m4.536s
+sys	0m0.004s
+
+ Performance counter stats for 'build.qemu/i386-linux-user/qemu-i386 automotive/bitcount/bitcnts 10000000':
+
+       4564.665922 task-clock (msec)         #    0.995 CPUs utilized          
+               236 context-switches          #    0.052 K/sec                  
+                 0 cpu-migrations            #    0.000 K/sec                  
+               698 page-faults               #    0.153 K/sec                  
+   <not supported> cycles                  
+   <not supported> stalled-cycles-frontend 
+   <not supported> stalled-cycles-backend  
+   <not supported> instructions            
+   <not supported> branches                
+   <not supported> branch-misses           
+
+       4.588970551 seconds time elapsed
+
+[35m Test qsort/qsort_small automotive/qsort/input_small.dat Qemu [0m
+
+real	0m0.035s
+user	0m0.032s
+sys	0m0.000s
+
+ Performance counter stats for 'build.qemu/i386-linux-user/qemu-i386 automotive/qsort/qsort_small automotive/qsort/input_small.dat':
+
+         35.572987 task-clock (msec)         #    0.994 CPUs utilized          
+                 7 context-switches          #    0.197 K/sec                  
+                 0 cpu-migrations            #    0.000 K/sec                  
+               748 page-faults               #    0.021 M/sec                  
+   <not supported> cycles                  
+   <not supported> stalled-cycles-frontend 
+   <not supported> stalled-cycles-backend  
+   <not supported> instructions            
+   <not supported> branches                
+   <not supported> branch-misses           
+
+       0.035775091 seconds time elapsed
+
+[35m Test qsort/qsort_large automotive/qsort/input_large.dat Qemu [0m
+
+real	0m0.418s
+user	0m0.416s
+sys	0m0.000s
+
+ Performance counter stats for 'build.qemu/i386-linux-user/qemu-i386 automotive/qsort/qsort_large automotive/qsort/input_large.dat':
+
+        412.939049 task-clock (msec)         #    0.997 CPUs utilized          
+                23 context-switches          #    0.056 K/sec                  
+                 0 cpu-migrations            #    0.000 K/sec                  
+               974 page-faults               #    0.002 M/sec                  
+   <not supported> cycles                  
+   <not supported> stalled-cycles-frontend 
+   <not supported> stalled-cycles-backend  
+   <not supported> instructions            
+   <not supported> branches                
+   <not supported> branch-misses           
+
+       0.414088314 seconds time elapsed
+
+[35m Test susan/susan automotive/susan/input_large.pgm /dev/null -s Qemu [0m
+
+real	0m0.275s
+user	0m0.272s
+sys	0m0.000s
+
+ Performance counter stats for 'build.qemu/i386-linux-user/qemu-i386 automotive/susan/susan automotive/susan/input_large.pgm /dev/null -s':
+
+        272.238998 task-clock (msec)         #    0.994 CPUs utilized          
+                17 context-switches          #    0.062 K/sec                  
+                 0 cpu-migrations            #    0.000 K/sec                  
+               774 page-faults               #    0.003 M/sec                  
+   <not supported> cycles                  
+   <not supported> stalled-cycles-frontend 
+   <not supported> stalled-cycles-backend  
+   <not supported> instructions            
+   <not supported> branches                
+   <not supported> branch-misses           
+
+       0.273835796 seconds time elapsed
+

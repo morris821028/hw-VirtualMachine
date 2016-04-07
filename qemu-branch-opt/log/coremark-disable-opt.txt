@@ -1,0 +1,40 @@
+2K performance run parameters for coremark.
+CoreMark Size    : 666
+Total ticks      : 15280000
+Total time (secs): 15.280000
+Iterations/Sec   : 1963.350785
+Iterations       : 30000
+Compiler version : GCC4.6.3
+Compiler flags   : -O2 -DPERFORMANCE_RUN=1  
+Memory location  : STACK
+seedcrc          : 0xe9f5
+[0]crclist       : 0xe714
+[0]crcmatrix     : 0x1fd7
+[0]crcstate      : 0x8e3a
+[0]crcfinal      : 0x5275
+Correct operation validated. See readme.txt for run and reporting rules.
+CoreMark 1.0 : 1963.350785 / GCC4.6.3 -O2 -DPERFORMANCE_RUN=1   / STACK
+
+real	0m21.025s
+user	0m20.860s
+sys	0m0.004s
+2K performance run parameters for coremark.
+CoreMark Size    : 666
+Total ticks      : 15210000
+Total time (secs): 15.210000
+Iterations/Sec   : 1972.386588
+Iterations       : 30000
+Compiler version : GCC4.6.3
+Compiler flags   : -O2 -DPERFORMANCE_RUN=1  
+Memory location  : STACK
+seedcrc          : 0xe9f5
+[0]crclist       : 0xe714
+[0]crcmatrix     : 0x1fd7
+[0]crcstate      : 0x8e3a
+[0]crcfinal      : 0x5275
+Correct operation validated. See readme.txt for run and reporting rules.
+CoreMark 1.0 : 1972.386588 / GCC4.6.3 -O2 -DPERFORMANCE_RUN=1   / STACK
+
+real	0m21.118s
+user	0m20.900s
+sys	0m0.000s
