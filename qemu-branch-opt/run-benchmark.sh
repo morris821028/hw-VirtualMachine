@@ -7,5 +7,6 @@ do
 	time test/${i}
 	echo -e "\033[35m Test ${i} Qemu\033[0m";
 	time build.qemu/i386-linux-user/qemu-i386 test/${i}
+	perf stat build.qemu/i386-linux-user/qemu-i386 test/${i}
 done
 

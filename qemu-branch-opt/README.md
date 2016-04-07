@@ -23,12 +23,12 @@ make rebuild
 #### Small ####
 
 ```
-sh run-benchmark.sh
+./run-benchmark.sh
 ```
 
 #### Large ####
 
 ```
-sh run-mibench.sh
-sh run-coremark.sh
+./run-mibench.sh
+./run-coremark.sh
 ```
