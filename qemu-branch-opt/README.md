@@ -32,3 +32,9 @@ make rebuild
 ./run-mibench.sh
 ./run-coremark.sh
 ```
+
+#### Report ####
+
+```
+./log.sh test/direct-br/basic.out 10000000
+```
