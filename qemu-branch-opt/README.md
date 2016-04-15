@@ -153,6 +153,13 @@ $ cat /tmp/qemu.log
 2.	在 Mibench 測試中，用指令 perf stat 印出的 task-clock (msec) 訊息比較，數值越低越好，同時相當於執行時間。
 3.	在 CoreMark 測試中，從測試工具中印出的 Iterations/Sec 訊息比較，數值越高越好。
 
+![Small-Test](images/Small-test.PNG)
+
+![Mibench-1](images/Mibench.PNG)
+
+![Mibench-2](images/Mibench2.PNG)
+
+![CoreMark](images/Coremark.PNG)
 
 ## 結語 ##
 
